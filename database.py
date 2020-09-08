@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-engine = create_engine(  'sqlite:///' + os.path.join(basedir, 'todo.db'))
+engine = create_engine(  'sqlite:///' + os.path.join(basedir, 'todos.db'))
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
@@ -18,4 +18,4 @@ def init_db():
     # they will be registered properly on the metadata.  Otherwise
     # you will have to import them first before calling init_db()
     import apps.todo.models
-    Base.metadata.create_all(bind=engine)
+    return Base.metadata.create_all(bind=engine)
