@@ -8,7 +8,7 @@ app.debug = True
 '''
 Get a all todo items
 '''
-@app.route('/todo', methods=['GET'])
+@app.route('/todo/', methods=['GET'])
 def index():
     tasks = Task.query.all()
     response = list(map(lambda task: task.serialize(), tasks))
@@ -17,7 +17,7 @@ def index():
 '''
 Get a single todo item
 '''
-@app.route('/todo/<todo_id>')
+@app.route('/todo/<todo_id>/')
 def show(todo_id):
     task = Task.query.get(todo_id)
     return task.as_dict()
@@ -26,7 +26,7 @@ def show(todo_id):
 '''
 Add a new todo item
 '''
-@app.route('/todo', methods=['POST'])
+@app.route('/todo/', methods=['POST'])
 def store():
     task = Task()
     task.title = request.form['title']
@@ -41,7 +41,7 @@ def store():
 '''
 Delete a todo item
 '''
-@app.route('/todo/<int:id>', methods=['DELETE'])
+@app.route('/todo/<int:id>/', methods=['DELETE'])
 def destroy(id):
     task = Task.query.get(id)
     db_session.delete(task)
@@ -52,10 +52,10 @@ def destroy(id):
 '''
 Change status of a todo item
 '''
-@app.route('/todo/<int:id>/done', methods=['PATCH'])
-def update_status(id):
+@app.route('/todo/<int:id>/done/', methods=['PATCH'])
+def update_status(id, new_status=None):
     task = Task.query.get(id)
-    task.status = "completed"
+    task.status = "done"
     updated = db_session.commit()
     return {'success': updated is None, 'data': task.as_dict()}
 
@@ -63,7 +63,7 @@ def update_status(id):
 '''
 Get information about the todo api
 '''
-@app.route('/todo/about')
+@app.route('/todo/about/')
 def about():
     return {'name': 'A simple Todo API in Flask', 'version': '0.1.0'}
 
