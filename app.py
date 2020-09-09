@@ -17,11 +17,10 @@ def index():
 '''
 Get a single todo item
 '''
-@app.route('/todo/<todo_id>/')
+@app.route('/todo/<todo_id>/', methods=['GET'])
 def show(todo_id):
     task = Task.query.get(todo_id)
     return task.as_dict()
-
 
 '''
 Add a new todo item
@@ -37,7 +36,6 @@ def store():
     db_session.commit()
     return {'success': task.id is not int, 'data': task.as_dict()}
 
-
 '''
 Delete a todo item
 '''
@@ -47,7 +45,6 @@ def destroy(id):
     db_session.delete(task)
     deleted = db_session.commit()
     return {'success': deleted is None, 'data': task.as_dict()}
-
 
 '''
 Change status of a todo item
@@ -59,14 +56,12 @@ def update_status(id, new_status=None):
     updated = db_session.commit()
     return {'success': updated is None, 'data': task.as_dict()}
 
-
 '''
 Get information about the todo api
 '''
 @app.route('/todo/about/')
 def about():
     return {'name': 'A simple Todo API in Flask', 'version': '0.1.0'}
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="todo" uuid="20844a1b-3a14-4e04-88ba-fd80fd89fa6d">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Mashcom\PycharmProjects\flaskProject2\todo.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="todos" uuid="39039f4f-d926-4083-b8d6-1af1fdcdb389">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Mashcom\PycharmProjects\flaskProject2\todos.db</jdbc-url>
+    </data-source>
+  </component>
+</project>

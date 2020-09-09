@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-engine = create_engine(  'sqlite:///' + os.path.join(basedir, 'todos.db'))
+engine = create_engine(  'sqlite:///' + os.path.join(basedir, 'todos_api.db'))
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
